@@ -5,6 +5,8 @@ https://cheatography.com/sertalpbilal/cheat-sheets/fpl-api-endpoints/
 API_BASE_URL = "https://fantasy.premierleague.com/api/"
 API_AUTH_BASE_URL = "https://account.premierleague.com/"
 
+STANDARD_CONNECTION_ID = "0d8c928e4970386733ce110b9dda8412"
+
 API_URLS = {
     "dynamic": "{}bootstrap-dynamic/".format(API_BASE_URL),
     "fixtures": "{}fixtures/".format(API_BASE_URL),
@@ -38,9 +40,7 @@ API_URLS = {
     "start": "{}davinci/policy/262ce4b01d19dd9d385d26bddb4297b6/start".format(
         API_AUTH_BASE_URL
     ),
-    "login": "{}davinci/connections/0d8c928e4970386733ce110b9dda8412/capabilities/customHTMLTemplate".format(
-        API_AUTH_BASE_URL
-    ),
+    "login": "https://account.premierleague.com/davinci/connections/{}/capabilities/customHTMLTemplate",
     "resume": "{}as/resume".format(API_AUTH_BASE_URL),
     "token": "{}as/token".format(API_AUTH_BASE_URL),
 }

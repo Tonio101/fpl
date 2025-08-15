@@ -37,7 +37,7 @@ from urllib.request import urlopen
 import certifi
 import requests
 
-from .constants import API_URLS
+from .constants import API_URLS, STANDARD_CONNECTION_ID
 from .models.classic_league import ClassicLeague
 from .models.fixture import Fixture
 from .models.gameweek import Gameweek
@@ -658,7 +658,7 @@ class FPL:
 
         # Step 3: log in with interaction tokens (requires 2 post requests)
         response = session.post(
-            API_URLS["login"],
+            API_URLS["login"].format(STANDARD_CONNECTION_ID),
             headers={
                 "interactionId": interaction_id,
                 "interactionToken": interaction_token,
@@ -677,7 +677,7 @@ class FPL:
         )
 
         response = session.post(
-            API_URLS["login"],
+            API_URLS["login"].format(STANDARD_CONNECTION_ID),
             headers={
                 "interactionId": interaction_id,
                 "interactionToken": interaction_token,
@@ -699,7 +699,28 @@ class FPL:
                 },
                 "eventName": "continue",
             },
+        ).json()
+
+        response = session.post(
+            API_URLS["login"].format(response["connectionId"]),  # need to use new connectionId from prev response
+            headers=headers,
+            json={
+                "id": response["id"],
+                "nextEvent": {
+                    "constructType": "skEvent",
+                    "eventName": "continue",
+                    "params": [],
+                    "eventType": "post",
+                    "postProcess": {},
+                },
+                "parameters": {
+                    "buttonType": "form-submit",
+                    "buttonValue": "SIGNON",
+                },
+                "eventName": "continue",
+            },
         )
+
         dv_response = response.json()["dvResponse"]
 
         # Step 4: Resume the login using the dv_response and handle redirect
