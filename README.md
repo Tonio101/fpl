@@ -41,7 +41,13 @@ or [.zip file](https://github.com/amosbastian/fpl/tarball/master)
 Once it has been downloaded you can easily install it using `pip`:
 
     cd fpl
+    ```bash
+    python3 -m pip install .
+    ```
+
+    ```bash
     pip install .
+    ```
 
 ## Contributing
 
