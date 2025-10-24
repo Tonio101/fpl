@@ -654,14 +654,14 @@ class FPL:
         }
         response = session.post(API_URLS["start"], headers=headers).json()
         interaction_id = response["interactionId"]
-        interaction_token = response["interactionToken"]
+        # interaction_token = response["interactionToken"]
 
         # Step 3: log in with interaction tokens (requires 2 post requests)
         response = session.post(
             API_URLS["login"].format(STANDARD_CONNECTION_ID),
             headers={
                 "interactionId": interaction_id,
-                "interactionToken": interaction_token,
+                # "interactionToken": interaction_token,
             },
             json={
                 "id": response["id"],
@@ -680,7 +680,7 @@ class FPL:
             API_URLS["login"].format(STANDARD_CONNECTION_ID),
             headers={
                 "interactionId": interaction_id,
-                "interactionToken": interaction_token,
+                # "interactionToken": interaction_token,
             },
             json={
                 "id": response.json()["id"],

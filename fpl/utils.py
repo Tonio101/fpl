@@ -202,8 +202,8 @@ def logged_in(session):
     """
     # return "csrftoken" in session.cookie_jar.filter_cookies(
     #     "https://users.premierleague.com/")
-    return "interactionToken" in session.cookies.get_dict()
-
+    # return "interactionToken" in session.cookies.get_dict()
+    return "interactionId" in session.cookies.get_dict()
 
 def coroutine(func):
     func = asyncio.coroutine(func)

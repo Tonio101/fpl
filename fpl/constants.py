@@ -1,6 +1,8 @@
 """
 FPL API Documentation Docs
 https://cheatography.com/sertalpbilal/cheat-sheets/fpl-api-endpoints/
+
+https://www.reddit.com/r/FantasyPL/comments/1f0fpep/fpl_api_is_it_possible_to_get_live_gameweek_score/
 """
 API_BASE_URL = "https://fantasy.premierleague.com/api/"
 API_AUTH_BASE_URL = "https://account.premierleague.com/"
